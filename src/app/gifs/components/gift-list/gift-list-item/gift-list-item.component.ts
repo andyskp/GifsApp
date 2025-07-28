@@ -6,5 +6,5 @@ import { GiftListComponent } from '../gift-list.component';
   templateUrl: './gift-list-item.component.html',
 })
 export class GiftListItemComponent { 
-  imageUrlUrl = input.required<string[]>();
+  imageUrl = input.required<string[]>();
 }
