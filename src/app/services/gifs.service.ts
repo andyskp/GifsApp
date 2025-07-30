@@ -7,10 +7,15 @@ import { GifMapper } from '../gifs/mapper/gir.mapper';
 @Injectable({ providedIn: 'root' })
 export class GifService {
   //? Se realiza la peticion a la API de Giphy para obtener los gifs
+  //* Se utiliza el metodo get del HttpClient para realizar la peticion
   private http = inject(HttpClient);
+  //* Se utiliza el metodo map del RxJS para transformar los datos obtenidos
   trendingGifs =  signal<Gif[]>([]);
+  trendingGifsLoading = signal(true);
   constructor() {
     this.loadTrendingGifs();
+    console.log("Servicio creado");
+    
   }
 
   loadTrendingGifs() {
@@ -26,8 +31,8 @@ export class GifService {
       }).subscribe((resp) => {
         const gifs = GifMapper.mapGiphyItemsToGifArray(resp.data)
         this.trendingGifs.set(gifs);
+        this.trendingGifsLoading.set(false);
         console.log(gifs);
-        
       });
   }
 }
