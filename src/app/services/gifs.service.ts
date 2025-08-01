@@ -22,7 +22,20 @@ export class GifService {
   //* Se utiliza el metodo get del HttpClient para realizar la peticion
   private http = inject(HttpClient);
   //* Se utiliza el metodo map del RxJS para transformar los datos obtenidos
+
+  trendingGifGroup = computed<Gif[][]>(() => {
+    const groups = [];
+    for (let i = 0; i < this.trendingGifs().length; i += 3) {
+      groups.push(this.trendingGifs().slice(i, i + 3));
+    }
+
+    console.log('Grupos de gifs:', groups);
+    return groups;
+  })
+
   trendingGifs = signal<Gif[]>([]);
+
+
   trendingGifsLoading = signal(true);
 
 

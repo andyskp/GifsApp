@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core';
+import {  Component, signal } from '@angular/core';
 import { environment } from '@environments/environment';
 
 @Component({
@@ -8,4 +8,5 @@ import { environment } from '@environments/environment';
 })
 export class SideMenuHeaderComponent { 
   envs = environment;
+  name = signal("Andres Bustos")
 };
