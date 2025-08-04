@@ -35,6 +35,7 @@ export default class TrendingPageComponent {
 
     if (isAtBottom) {
       this.gifService.loadTrendingGifs();
+
     }
   }
   gifService = inject(GifService);

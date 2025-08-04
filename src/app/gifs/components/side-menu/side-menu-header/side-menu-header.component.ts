@@ -6,7 +6,7 @@ import { environment } from '@environments/environment';
   imports: [],
   templateUrl: './side-menu-header.component.html',
 })
-export class SideMenuHeaderComponent { 
+export class SideMenuHeaderComponent {
   envs = environment;
   name = signal("Andres Bustos")
 };
