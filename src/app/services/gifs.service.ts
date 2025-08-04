@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
-import type { GiphyResponse } from '../interfaces/giphy.interfaces';
-import { environment } from '@environments/environment';
 import { Gif } from '../interfaces/gif.interface';
 import { GifMapper } from '../gifs/mapper/gir.mapper';
 import { map, Observable, tap } from 'rxjs';
+import { environment } from '@environments/environment';
+import type { GiphyResponse } from '../interfaces/giphy.interfaces';
 
 const GIF_KEY = 'gifs'; //? Clave para almacenar los gifs en el localStorage
 
@@ -29,7 +29,6 @@ export class GifService {
       groups.push(this.trendingGifs().slice(i, i + 3));
     }
 
-    console.log('Grupos de gifs:', groups);
     return groups;
   })
 
@@ -49,7 +48,6 @@ export class GifService {
   constructor() {
     this.loadTrendingGifs();
     this.searchHistory.set(loadFromLocalStorage());
-    console.log('Servicio creado');
   }
 
   loadTrendingGifs() {
@@ -66,7 +64,6 @@ export class GifService {
         const gifs = GifMapper.mapGiphyItemsToGifArray(resp.data);
         this.trendingGifs.set(gifs);
         this.trendingGifsLoading.set(false);
-        console.log(gifs);
       });
   }
 

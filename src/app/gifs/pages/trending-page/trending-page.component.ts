@@ -1,5 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { GiftListComponent } from '../../components/gift-list/gift-list.component';
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
 import { GifService } from 'src/app/services/gifs.service';
 
 // const imageUrls: string[] = [
@@ -19,9 +18,14 @@ import { GifService } from 'src/app/services/gifs.service';
 
 @Component({
   selector: 'app-trending-page',
-  imports: [GiftListComponent],
+  // imports: [GiftListComponent],
   templateUrl: './trending-page.component.html',
 })
 export default class TrendingPageComponent {
+  scrollDivRef = viewChild<ElementRef>('groupDiv');
+  onScroll(event: Event) {
+    const scrollDiv = this.scrollDivRef()?.nativeElement;
+    console.log(scrollDiv);
+  }
   gifService = inject(GifService);
 }

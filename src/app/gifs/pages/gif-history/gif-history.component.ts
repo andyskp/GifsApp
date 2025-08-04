@@ -11,6 +11,10 @@ import { GiftListComponent } from "../../components/gift-list/gift-list.componen
   templateUrl: './gif-history.component.html',
 })
 export default class GifHistoryComponent {
+onScroll($event: Event) {
+console.log($event);
+;
+}
   gifService = inject(GifService);
   query = toSignal(inject(ActivatedRoute).params.pipe(map(params => params['query']))
 );
